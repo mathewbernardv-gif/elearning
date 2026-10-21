@@ -1,0 +1,4 @@
+import {NavLink,Outlet,Link} from 'react-router-dom';import {useAuth} from '../context/AuthContext';
+export function Header(){const {user,isAuthenticated,logout}=useAuth();return <header className="header"><Link to="/" className="brand"><span className="brand-mark">L</span> LearnSphere</Link><nav><NavLink to="/courses">Courses</NavLink><NavLink to="/learning">My Learning</NavLink>{isAuthenticated&&<NavLink to="/profile">Profile</NavLink>}</nav><div className="header-actions">{isAuthenticated?<><span className="welcome">Hi, {user?.name?.split(' ')[0]}</span><button className="btn outline" onClick={logout}>Logout</button></>:<Link className="btn primary" to="/login">Student Login</Link>}</div></header>}
+export function Footer(){return <footer className="footer"><b>LearnSphere</b><span>Learn something useful every day.</span><span>Scenario 7 · E-Learning Web Application</span></footer>}
+export function AppLayout(){return <><Header/><Outlet/><Footer/></>}

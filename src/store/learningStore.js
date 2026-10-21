@@ -1,0 +1,4 @@
+import {create} from 'zustand';
+import {persist,createJSONStorage} from 'zustand/middleware';
+const logMiddleware=(config)=>(set,get,api)=>config((...args)=>{set(...args);console.info('[Learning Store action]',new Date().toLocaleTimeString(),get());},get,api);
+export const useLearningStore=create(persist(logMiddleware((set,get)=>({enrollments:[],setEnrollments:(enrollments)=>set({enrollments}),upsertEnrollment:(item)=>set(s=>({enrollments:s.enrollments.some(e=>e.id===item.id)?s.enrollments.map(e=>e.id===item.id?item:e):[...s.enrollments,item]})),removeEnrollment:(id)=>set(s=>({enrollments:s.enrollments.filter(e=>e.id!==id)})),updateLocal:(id,updates)=>set(s=>({enrollments:s.enrollments.map(e=>e.id===id?{...e,...updates}:e)}))})),{name:'elearning-learning-store',storage:createJSONStorage(()=>localStorage)}));

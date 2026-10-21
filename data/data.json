@@ -1,0 +1,91 @@
+{
+  "courses": [
+    {
+      "id": "101",
+      "title": "Cybersecurity Fundamentals",
+      "category": "Cybersecurity",
+      "level": "Beginner",
+      "duration": 6,
+      "instructor": "Ananya Rao",
+      "description": "Learn core security principles, common threats, and practical ways to protect systems.",
+      "materials": [
+        "Security basics",
+        "Threat landscape",
+        "Account protection"
+      ],
+      "lessons": 5
+    },
+    {
+      "id": "102",
+      "title": "React Development Essentials",
+      "category": "Web Development",
+      "level": "Intermediate",
+      "duration": 8,
+      "instructor": "Arun Kumar",
+      "description": "Build component-based user interfaces with React, hooks, routing, and reusable patterns.",
+      "materials": [
+        "JSX and components",
+        "React Hooks",
+        "Routing and forms"
+      ],
+      "lessons": 6
+    },
+    {
+      "id": "103",
+      "title": "Python for Data Analysis",
+      "category": "Programming",
+      "level": "Beginner",
+      "duration": 5,
+      "instructor": "Meera Shah",
+      "description": "Explore Python fundamentals and learn to transform data into useful insights.",
+      "materials": [
+        "Python basics",
+        "Collections",
+        "Data processing"
+      ],
+      "lessons": 4
+    },
+    {
+      "id": "104",
+      "title": "Cloud Security Practices",
+      "category": "Cybersecurity",
+      "level": "Advanced",
+      "duration": 10,
+      "instructor": "Vikram Das",
+      "description": "Understand identity, access control, monitoring, and cloud security architecture.",
+      "materials": [
+        "Cloud identity",
+        "Secure configuration",
+        "Monitoring"
+      ],
+      "lessons": 7
+    },
+    {
+      "id": "105",
+      "title": "API Design with Node.js",
+      "category": "Web Development",
+      "level": "Intermediate",
+      "duration": 7,
+      "instructor": "Priya Nair",
+      "description": "Design and implement REST APIs, validate requests, and handle errors.",
+      "materials": [
+        "REST principles",
+        "Express routes",
+        "API testing"
+      ],
+      "lessons": 5
+    }
+  ],
+  "users": [
+    {
+      "id": "STU1001",
+      "name": "Demo Student",
+      "email": "student@example.com",
+      "password": "student123"
+    }
+  ],
+  "enrollments": [],
+  "quizzes": [],
+  "assignments": [],
+  "history": []
+}

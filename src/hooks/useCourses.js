@@ -1,0 +1,8 @@
+import {useCallback,useEffect,useMemo,useRef,useState} from 'react';
+import {getCourses} from '../services/api';
+export function useCourses(){const [courses,setCourses]=useState([]);const [loading,setLoading]=useState(true);const [error,setError]=useState('');const [search,setSearch]=useState('');const [category,setCategory]=useState('All');const [level,setLevel]=useState('All');const [maxDuration,setMaxDuration]=useState('All');const [instructor,setInstructor]=useState('');const searchRef=useRef(null);
+ const load=useCallback(async()=>{setLoading(true);setError('');try{const data=await getCourses();setCourses(data);}catch(e){setError(e.response?.data?.error||'Unable to load courses. Make sure the API server is running.');}finally{setLoading(false);}},[]);
+ useEffect(()=>{load();const timer=setTimeout(()=>searchRef.current?.focus(),250);return()=>clearTimeout(timer);},[load]);
+ const filteredCourses=useMemo(()=>courses.filter(c=>{const q=search.trim().toLowerCase();return (!q||`${c.title} ${c.description} ${c.instructor} ${c.category}`.toLowerCase().includes(q))&&(category==='All'||c.category===category)&&(level==='All'||c.level===level)&&(maxDuration==='All'||c.duration<=Number(maxDuration))&&(!instructor.trim()||c.instructor.toLowerCase().includes(instructor.toLowerCase()));}),[courses,search,category,level,maxDuration,instructor]);
+ const categories=useMemo(()=>['All',...new Set(courses.map(c=>c.category))],[courses]);
+ return {courses,filteredCourses,loading,error,load,search,setSearch,category,setCategory,level,setLevel,maxDuration,setMaxDuration,instructor,setInstructor,categories,searchRef};}
